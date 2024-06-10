@@ -50,11 +50,11 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="birthdate" class="col-md-4 col-form-label text-md-end text-start">Fecha de nacimiento</label>
+                        <label for="birthday" class="col-md-4 col-form-label text-md-end text-start">Fecha de nacimiento</label>
                         <div class="col-md-6">
-                          <input type="date" class="form-control @error('birthdate') is-invalid @enderror" id="birthdate" name="birthdate" value="{{ old('birthdate') }}">
-                            @if ($errors->has('birthdate'))
-                                <span class="text-danger">{{ $errors->first('birthdate') }}</span>
+                          <input type="date" class="form-control @error('birthday') is-invalid @enderror" id="birthday" name="birthday" value="{{ old('birthday') }}">
+                            @if ($errors->has('birthday'))
+                                <span class="text-danger">{{ $errors->first('birthday') }}</span>
                             @endif
                         </div>
                     </div>
@@ -88,4 +88,4 @@
         </div>
     </div>    
 </div>
-</x-app-layout>   
+</x-app-layout>

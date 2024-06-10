@@ -11,13 +11,16 @@ class Student extends Model
     use HasFactory;
 
     protected $fillable = [
-        'year',
         'dni',
         'name',
         'last_name',
+        'birthday',
         'cluster',
-        'birthday'
+        'year',
     ];
 
+    public function assist()
+    {
 
+    }
 }

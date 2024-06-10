@@ -9,7 +9,7 @@
     <div class="col-md-12 ">
 
         @if ($message = Session::get('success'))
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success text-center" role="alert">
                 {{ $message }}
             </div>
         @endif
@@ -23,41 +23,42 @@
                         <th scope="col">DNI</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
-                        <th scope="col">Cumpleaños</th>
+                        <th scope="col">Fecha de nacimiento</th>
                         <th scope="col">Año</th>
                         <th scope="col">Curso</th>
                         <th scope="col">Acciones</th>
                       </tr>
                     </thead>
                     <tbody class="text-center">
-                        {{-- @forelse ($products as $product) --}}
+                        @forelse ($students as $student)
                         <tr>
-                            <td>39255959</td>
-                            <td>Franco</td>
-                            <td>Robles</td>
-                            <td>Cumpleaños</td>
-                            <td>3</td>
-                            <td>A</td>
+                            <input type="integer" class="d-none hidden" name="{{$student->id}}">
+                            <td>{{$student->dni}}</td>
+                            <td>{{$student->name}}</td>
+                            <td>{{$student->last_name}}</td>
+                            <td>{{$student->birthday}}</td>
+                            <td>{{$student->year}}</td>
+                            <td>{{$student->cluster}}</td>
                             <td>
-                                <form action="#" method="post" class="d-flex justify-content-evenly">
+                                <form action="{{route('students.destroy',$student->id)}}" method="post" class="d-flex justify-content-evenly">
                                     @csrf
                                     @method('DELETE')
 
-                                    <a href="#" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i>Ver</a>
+                                    <a href="{{route('students.show',$student->id)}}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i>Ver</a>
 
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>Editar</a>   
+                                    <a href="{{route('students.edit', $student->id)}}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>Editar</a>   
 
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estas seguro que quieres eliminar?');"><i class="bi bi-trash"></i>Eliminar</button>
                                 </form>
                             </td>
                         </tr>
-                        {{-- @empty --}}
-                            {{-- <td colspan="6">
+                        @empty
+                            <td colspan="6">
                                 <span class="text-danger">
-                                    <strong>No se encontraron alumnos</strong>
+                                    <strong>No se encontraron alumnos en el listado</strong>
                                 </span>
-                            </td> --}}
-                        {{-- @endforelse --}}
+                            </td>
+                        @endforelse
                     </tbody>
                   </table>
             </div>
