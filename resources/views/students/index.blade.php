@@ -48,6 +48,7 @@
 
                                     <a href="{{route('students.edit', $student->id)}}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>Editar</a>   
 
+                                    <a href="{{Route('student.assists', $student->id)}}" class="btn btn-secondary btn-sm"><i class="bi bi-card-checklist"></i>Asistencia</a>
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estas seguro que quieres eliminar?');"><i class="bi bi-trash"></i>Eliminar</button>
                                 </form>
                             </td>
@@ -61,7 +62,8 @@
                         @endforelse
                     </tbody>
                   </table>
-            </div>
+                {{ $students->links() }}
+                  </div>
         </div>
     </div>    
 </div>

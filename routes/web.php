@@ -1,9 +1,11 @@
 <?php
 // Controladores
+
+use App\Http\Controllers\AssistController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ProductController;
-
+use App\Models\Assist;
 // Illuminate
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +37,13 @@ Route::middleware('auth')->group(function () {
     Route::resource('students', StudentController::class);
 
     // Student
+    Route::get('/assists/{id}', [StudentController::class,'assists'])->name('student.assists');
+
+    // Assist
+    Route::get('/assist', [StudentController::class, 'search'])->name('assist.search');
+    Route::post('/assist/show', [AssistController::class, 'mostrar'])->name('assist.mostrar');
+    
+
 });
 
 require __DIR__.'/auth.php';

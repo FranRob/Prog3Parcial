@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Student;
+use App\Models\Assist;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,21 +13,12 @@ use Illuminate\Http\Request;
 class StudentController extends Controller
 {
     //////////////////////
-    ////RELATIONS
-    /////////////////////
-
-    public function assist()
-    {
-
-    }
-
-    //////////////////////
     ////CRUD
     /////////////////////
 
     public function index(): View
     {
-        $students = Student::all();
+        $students = Student::first()->paginate(10);
         return view('students.index', compact('students'));
     }
 
@@ -67,6 +59,16 @@ class StudentController extends Controller
         return redirect()->route('students.index')->withSuccess('Alumno eliminado correctamente');
     }
 
-    
+    public function assists($id) : View
+    {   
+        $student = Student::find($id);
+        $assists = $student->assist;
+        return view('students.assists', compact('student','assists'));
+    }
+
+    public function search() : View
+    {
+        return view('assists.search');
+    }
 
 }

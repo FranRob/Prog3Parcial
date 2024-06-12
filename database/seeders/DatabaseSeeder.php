@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         \App\Models\Student::factory(20)->create();
+        \App\Models\Assist::factory(20)->create();
     }
 }
