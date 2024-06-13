@@ -14,17 +14,33 @@
             <div class="card w-25">
                 <div class="card-body">
                     <div class="d-flex flex-column">
-                        <form action="{{route('assist.mostrar')}}" method="post"></form>
+                        <form action="{{route('assist.show')}}" method="post">
                         @csrf
                             <div class="form-floating mb-3">
                                 <input type="number" class="form-control" name="student_dni" id="student_dni">
                                 <label for="student_dni">DNI:</label>
                             </div>
-                            <button type="submit" class="btn btn-primary">Buscar</button>
+                            <input type="submit" class="btn btn-primary" value="Buscar Alumno">
                         </form>
                     </div>
                 </div>
             </div>
     </div>
+
+    @if ($error = $errors->first())
+    <div class="d-flex justify-content-center mt-3" >
+        <div class="alert alert-danger" role="alert">
+            {{ $error }}
+        </div>
+    </div>
+    @endif
+
+    @if ($message = Session::get('success'))
+    <div class="d-flex justify-content-center mt-3" >
+        <div class="alert alert-success" role="alert">
+            {{ $message }}
+        </div>
+    </div>
+    @endif
 
 </x-app-layout>

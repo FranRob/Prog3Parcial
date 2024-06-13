@@ -41,8 +41,8 @@ Route::middleware('auth')->group(function () {
 
     // Assist
     Route::get('/assist', [StudentController::class, 'search'])->name('assist.search');
-    Route::post('/assist/show', [AssistController::class, 'mostrar'])->name('assist.mostrar');
-    
+    Route::post('/assist/show', [AssistController::class, 'show'])->name('assist.show');
+    Route::post('assist/create', [AssistController::class, 'store'])->name('assist.store');
 
 });
 
